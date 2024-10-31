@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html::-webkit-scrollbar {
+            display: none;
+        }
+
+        * {
+            font-family: system-ui, sans-serif, Arial;
+            transition: all 0.5s ease;
+        }
+
+        *:not(.ltr) {
+            direction: rtl;
+        }
+
+        *.ltr {
+            direction: ltr;
+        }
+
+        h1.header {
+            text-align: center;
+            background-image: linear-gradient(60deg, rgb(36, 212, 168), rgb(211, 186, 44));
+            color: transparent;
+            background-clip: text;
+        }
+
+        h1#pgnm {
+            position: fixed;
+            bottom: 0%;
+            right: 50%;
+            left: 50%;
+            opacity: 0.5;
+            z-index: 1000;
+        }
+
+        img {
+            z-index: 1000;
+            width: 80%;
+            border-radius: 5px;
+            float: left;
+        }
+
+        button {
+            background-color: rgba(100, 100, 100, 0.5);
+            border-radius: 5px;
+            border-width: 0px;
+            padding: 0.5pc;
+            position: fixed;
+            bottom: 5%;
+            z-index: 1000;
+        }
+
+        button:not(:disabled):hover {
+            background-color: rgba(200, 200, 200, 0.5);
+            padding: 0.75pc;
+        }
+
+        button:nth-child(1) {
+            right: 5%;
+        }
+
+        button:nth-child(2) {
+            left: 5%;
+        }
+
+        .code {
+            text-align: center;
+            margin-right: 0;
+            margin-left: 0;
+            border-radius: 10px;
+            background-color: rgba(100, 100, 100, 0.2);
+            backdrop-filter: blur(1px);
+            border: 1px solid black;
+            width: 85%;
+            overflow-x: auto;
+        }
+
+        .code::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .code::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .code::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #888;
+        }
+
+        .code::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .code .value {
+            color: rgb(223, 178, 120);
+        }
+
+        .code .string {
+            color: rgb(226, 180, 52);
+        }
+
+        .code .selector {
+            color: rgb(33, 68, 162);
+        }
+
+        .code .bracket {
+            color: rgb(165, 140, 0);
+        }
+
+        .code .star,
+        .code .property {
+            color: rgb(32, 184, 184);
+        }
+
+        h1#watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(-25deg);
+            color: rgba(0, 0, 0, 0.1);
+            font-size: 240%;
+            pointer-events: none;
+        }
+
+        h1#watermark::selection {
+            background-color: transparent;
+        }
+    </style>
+    <link rel="icon" type="image/png" sizes="64x64"
+        href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%20width%3D%22480px%22%20height%3D%22480px%22%3E%20%20%20%20%3Cpath%20fill%3D%22%23E65100%22%20d%3D%22M41%2C5H7l3%2C34l14%2C4l14-4L41%2C5L41%2C5z%22%20/%3E%20%20%20%20%3Cpath%20fill%3D%22%23FF6D00%22%20d%3D%22M24%208L24%2039.9%2035.2%2036.7%2037.7%208z%22%20/%3E%20%20%20%20%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M24%2C25v-4h8.6l-0.7%2C11.5L24%2C35.1v-4.2l4.1-1.4l0.3-4.5H24z%20M32.9%2C17l0.3-4H24v4H32.9z%22%20/%3E%20%20%20%20%3Cpath%20fill%3D%22%23EEE%22%20d%3D%22M24%2C30.9v4.2l-7.9-2.6L15.7%2C27h4l0.2%2C2.5L24%2C30.9z%20M19.1%2C17H24v-4h-9.1l0.7%2C12H24v-4h-4.6L19.1%2C17z%22%20/%3E%3C/svg%3E">
+    <title>برمجة - HTML</title>
+</head>
+
+<body>
+    <button disabled>التالي</button>
+    <button disabled>السابق</button>
+    <h1 id="watermark">حمزة محمد</h1>
+    <h1 id="pgnm"></h1>
+    <div id="container">
+        <div class="div">
+            <h1 class="header">تعريف HTML</h1>
+            <h3>HTML: هي لغة ترميز
+                <ol>
+                    <li>تستخدم في تصميم مواقع الويب</li>
+                    <li>سهلة الاستخدام</li>
+                    <li>هي لغة Markup language</li>
+                    <li>يمكن استخدامها بشكل أساسي مع JavaScript و CSS و PHP</li>
+                    <li>تسمي Hypertext Markup language</li>
+                </ol>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">تعريف Markup language</h1>
+            <h3>Markup language: هو نوع من اللغات
+                <ul>
+                    <li>يتكون من عناصر (Elements)</li>
+                    <li>من امثلته:
+                        <ol>
+                            <li>HTML لتصميم مواقع الويب</li>
+                            <li>XAML لتصميم تطبيقات سطح المكتب</li>
+                            <li>XML وهي لغة تتعدد استخداماتها مثل حفظ البيانات</li>
+                        </ol>
+                    </li>
+                    <li>غالبًا ينتهي اسم الملف وامتداد الملف بML مثل HTML</li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">تركيب العناصر في HTML</h1>
+            <h1 class="header">الجزء الأول</h1>
+            <h3>تتكون العناصر في Markup languages من ثلاث أجزاء:
+                <ul>
+                    <li>الافتتاح: هو الجزء المطلوب لاستخدام العنصر: <ol>
+                            <li>يبدأ بعلامة &gt;</li>
+                            <li>تليها اسم العنصر</li>
+                            <li>ثم علامة &lt;</li>
+                            <li>مثل &lt;p&gt;</li>
+                            <li>تقع في بداية العنصر</li>
+                        </ol>
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">تركيب العناصر في HTML</h1>
+            <h1 class="header">الجزء الثاني</h1>
+            <h3>
+                <ul>
+                    <li>المنتصف: هو جزء ليس موجود في كل العناصر:
+                        <ol>
+                            <li>مطلوب للعناصر التي تقوم بعرض النصوص بداخلها أو التي تحتوي على عناصر أخرى أو نصوص تقوم
+                                بمعالجتها دون عرضها.</li>
+                            <li>تتكون من نص أو عنصر آخر أو كلاهما.</li>
+                            <li>تقع في منتصف العنصر.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">تركيب العناصر في HTML</h1>
+            <h1 class="header">الجزء الثالث</h1>
+            <h3>
+                <ul>
+                    <li>النهاية: هو جزء ليس موجود في كل العناصر:
+                        <ol>
+                            <li>تبدأ بعلامة /&gt;</li>
+                            <li>تليها اسم العنصر</li>
+                            <li>ثم علامة &lt;</li>
+                            <li>مثل &lt;p/&gt;</li>
+                            <li>تقع في نهاية العنصر.</li>
+                        </ol>
+                    </li>
+                    <li>الملخص: أمثلة على العناصر:
+                        <p class="code ltr">&lt;<label class="selector">p</label>&gt;السلام عليكم&lt;/<label
+                                class="selector">p</label>&gt;</p>
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">خصائص العناصر</h1>
+            <h3>خصائص العناصر: هي خصائص توضع للعناصر:
+                <ul>
+                    <li>توضع بعد اسم العنصر</li>
+                    <li>تحدد أشياء مهمة تخص العناصر</li>
+                    <li>مثل name و id و class</li>
+                    <li>مثال لاستخدام الخواص على عنصر:
+                        <p class="code ltr">&lt;<label class="selector">p</label> <label
+                                class="property">name</label>=<label class="value">"pname"</label>&gt;السلام
+                            عليكم&lt;/<label class="selector">p</label>&gt;</p>
+                    </li>
+                    <li>الخاصية name تدل على اسم مجموعة العنصر.</li>
+                    <li>الخاصية id تدل على العنصر عند الاشارة اليه في اللغات الأخرى المستخدمة مع HTML.</li>
+                    <li>الخاصية class تدل على اسماء مجموعات العنصر.</li>
+                    <li>تتكون من اسم الخاصية ويساوي وعلامتي تنصيص.</li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">Visual Studio Code</h1>
+            <h3>Visual Studio Code هو:
+                <ul>
+                    <li>محرر نصوص</li>
+                    <li>يستخدم في إنشاء وتعديل ملفات HTML</li>
+                    <li>يتم تحميله من <a href="https://code.visualstudio.com/">https://code.visualstudio.com</a>.</li>
+                    <li>تبدأ بالشاشة الافتتاحية: 
+                        <img src="Assets/as1.png" alt="الشاشة الافتتاحية">
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">انشاء الملف في Visual Studio Code</h1>
+            <h3>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </h3>
+        </div>
+    </div>
+
+    <script type="module">
+        const delay = ms => new Promise(res => setInterval(res, ms));
+        const next = document.querySelectorAll("button")[0];
+        const prev = document.querySelectorAll("button")[1];
+        const pgnm = document.querySelectorAll("h1#pgnm")[0];
+
+        var pageNumber = 1;
+        var index = pageNumber - 1;
+        var available = true;
+
+        next.addEventListener("click", async () => {
+            if (available) {
+                if (index < document.querySelectorAll("#container .div").length - 1) {
+                    available = false;
+                    pgnm.style.opacity = 0;
+                    document.querySelectorAll("#container .div").forEach(element => {
+                        element.style.opacity = 0;
+                    });
+                    await delay(500)
+                    index++;
+                    await delay(500)
+                    document.querySelectorAll("#container .div").forEach(element => {
+                        element.style.opacity = 1;
+                    });
+                    pgnm.style.opacity = 0.5;
+                    await delay(500)
+                    available = true;
+                }
+            }
+        });
+
+        prev.addEventListener("click", async () => {
+            if (available) {
+                if (index > 0) {
+                    available = false;
+                    pgnm.style.opacity = 0;
+                    document.querySelectorAll("#container .div").forEach(element => {
+                        element.style.opacity = 0;
+                    });
+                    await delay(500);
+                    index--;
+                    await delay(500);
+                    document.querySelectorAll("#container .div").forEach(element => {
+                        element.style.opacity = 1;
+                    });
+                    pgnm.style.opacity = 0.5;
+                    await delay(500)
+                    available = true;
+                }
+            }
+        });
+
+        while (true) {
+            pgnm.textContent = index + 1;
+            var sint = document.querySelectorAll("#container .div").length - 1;
+            if (index == 0) {
+                prev.disabled = true;
+            }
+            else {
+                prev.disabled = false;
+            }
+            if (index == sint) {
+                next.disabled = true;
+            }
+            else {
+                next.disabled = false;
+            }
+
+            document.querySelectorAll("button").forEach(element => {
+                if (available) {
+                    if (!element.disabled) {
+                        element.style.cursor = "pointer";
+                    }
+                    else {
+                        element.style.cursor = "auto";
+                    }
+                }
+                else {
+                    element.style.cursor = "auto";
+                }
+            });
+
+            document.querySelectorAll("#container .div").forEach(element => {
+                if (element != document.querySelectorAll("#container .div")[index]) {
+                    element.style.display = "none";
+                }
+                else {
+                    element.style.display = "block";
+                }
+            });
+            await delay(100);
+        }
+    </script>
+</body>
+
+</html>
