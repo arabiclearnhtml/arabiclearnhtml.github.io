@@ -22,6 +22,13 @@
             direction: ltr;
         }
 
+        kbd {
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1px;
+        }
+
         h1.header {
             text-align: center;
             background-image: linear-gradient(60deg, rgb(36, 212, 168), rgb(211, 186, 44));
@@ -40,9 +47,19 @@
 
         img {
             z-index: 1000;
-            width: 80%;
+            width: 50%;
             border-radius: 5px;
             float: left;
+        }
+
+        img:hover {
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 600px) {
+            img {
+                width: 100%;
+            }
         }
 
         button {
@@ -78,6 +95,13 @@
             border: 1px solid black;
             width: 85%;
             overflow-x: auto;
+        }
+
+        .code.taltrfs {
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            white-space: pre;
         }
 
         .code::-webkit-scrollbar {
@@ -132,9 +156,53 @@
         h1#watermark::selection {
             background-color: transparent;
         }
+
+        p.mlh::before,
+        p.mlhi::before,
+        p.activ::before {
+            background-image: linear-gradient(to right, purple, rgb(10, 130, 255));
+            background-clip: text;
+            color: transparent;
+        }
+
+        p.mlh::before {
+            content: 'ملحوظة: ';
+        }
+
+        p.mlhi::before {
+            content: 'ملحوظة مهمة: ';
+        }
+
+        p.activ::before {
+            content: 'نشاط: ';
+        }
+
+        p.activ.prize::after {
+            opacity: 0.5;
+            content: ' أفضل نشاط يحصل على جائزة';
+        }
+
+        p.mlh,
+        p.mlhi,
+        p.activ {
+            background-color: rgba(255, 255, 0, 0.5);
+            border-radius: 10px;
+            max-width: 500px;
+        }
+
+        table {
+            text-align: center;
+            margin-top: 5px;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px black solid;
+            min-width: 30px;
+        }
     </style>
-    <link rel="icon" type="image/png" sizes="64x64"
-        href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%20width%3D%22480px%22%20height%3D%22480px%22%3E%20%20%20%20%3Cpath%20fill%3D%22%23E65100%22%20d%3D%22M41%2C5H7l3%2C34l14%2C4l14-4L41%2C5L41%2C5z%22%20/%3E%20%20%20%20%3Cpath%20fill%3D%22%23FF6D00%22%20d%3D%22M24%208L24%2039.9%2035.2%2036.7%2037.7%208z%22%20/%3E%20%20%20%20%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M24%2C25v-4h8.6l-0.7%2C11.5L24%2C35.1v-4.2l4.1-1.4l0.3-4.5H24z%20M32.9%2C17l0.3-4H24v4H32.9z%22%20/%3E%20%20%20%20%3Cpath%20fill%3D%22%23EEE%22%20d%3D%22M24%2C30.9v4.2l-7.9-2.6L15.7%2C27h4l0.2%2C2.5L24%2C30.9z%20M19.1%2C17H24v-4h-9.1l0.7%2C12H24v-4h-4.6L19.1%2C17z%22%20/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" sizes="64x64" href="Assets/icon.svg">
     <title>برمجة - HTML</title>
 </head>
 
@@ -150,7 +218,7 @@
                 <ol>
                     <li>تستخدم في تصميم مواقع الويب</li>
                     <li>سهلة الاستخدام</li>
-                    <li>هي لغة Markup language</li>
+                    <li>تعد لغة Markup language</li>
                     <li>يمكن استخدامها بشكل أساسي مع JavaScript و CSS و PHP</li>
                     <li>تسمي Hypertext Markup language</li>
                 </ol>
@@ -216,6 +284,8 @@
                             <li>ثم علامة &lt;</li>
                             <li>مثل &lt;p/&gt;</li>
                             <li>تقع في نهاية العنصر.</li>
+                            <li>مهمة للعناصر التي تحتوي نصوص</li>
+                            <li>غالبًا غير موجودة في العناصر التي تحتوي خواص فقط</li>
                         </ol>
                     </li>
                     <li>الملخص: أمثلة على العناصر:
@@ -237,10 +307,13 @@
                                 class="property">name</label>=<label class="value">"pname"</label>&gt;السلام
                             عليكم&lt;/<label class="selector">p</label>&gt;</p>
                     </li>
+                    <li>تتكون من اسم الخاصية ويساوي وعلامتي تنصيص ويوضع بينهما الخاصية.</li>
+                    <li>أحيانًا لا تحتاج الخاصية سوى إضافة اسمها للعنصر وبدون علامة يساوي أو علامات التنصيص مثل hidden
+                    </li>
                     <li>الخاصية name تدل على اسم مجموعة العنصر.</li>
                     <li>الخاصية id تدل على العنصر عند الاشارة اليه في اللغات الأخرى المستخدمة مع HTML.</li>
                     <li>الخاصية class تدل على اسماء مجموعات العنصر.</li>
-                    <li>تتكون من اسم الخاصية ويساوي وعلامتي تنصيص.</li>
+                    <li>الخاصية hidden تقوم باخفاء العنصر من المستعرض</li>
                 </ul>
             </h3>
         </div>
@@ -251,35 +324,265 @@
                     <li>محرر نصوص</li>
                     <li>يستخدم في إنشاء وتعديل ملفات HTML</li>
                     <li>يتم تحميله من <a href="https://code.visualstudio.com/">https://code.visualstudio.com</a>.</li>
-                    <li>تبدأ بالشاشة الافتتاحية: 
-                        <img src="Assets/as1.png" alt="الشاشة الافتتاحية">
+                    <li>تبدأ بالشاشة الافتتاحية: </li>
+                    <img src="Assets/as1.png" alt="الشاشة الافتتاحية">
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">الجزء الأول</h1>
+            <h1 class="header">انشاء الملف في Visual Studio Code</h1>
+            <h3>يتم انشاء الملف من خلال بعض الخطوات:
+                <ol type="1">
+                    <li>من الشاشة الافتتاحية تحديد فتح مجلد</li>
+                    <p class="ltr">"Open Folder"</p>
+                    <li>اختيار المجلد</li>
+                    <li>اضغط على قائمة علامة مستعرض المجلد إن لم تظهر القائمة</li>
+                    <p class="ltr">Explorer</p>
+                    <li>من الشريط الذي يظهر فيه اسم المجلد اضغط زر انشاء الملف وحدد الاسم</li>
+                    <p class="ltr">"New File..."</p>
+                    <p class="mlhi">يكون اسم ملف HTML غالبًا index.html أو index.htm</p>
+                </ol>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">الجزء الثاني</h1>
+            <h1 class="header">كتابة سطور HTML في الملف</h1>
+            <h3>
+                <ol type="1">
+                    <li>من قائمة المستعرض اختر اسم الملف لفتحه إن لم يتم فتحه تلقائيًا</li>
+                    <li>ان لم يظهر الملف حدد اسم الملف من الشريط</li>
+                    <li>يتم كتابة كود HTML في منطقة الكتابة:</li>
+                    <img src="Assets/as2.png" alt="منطقة الكتابة">
+                </ol>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">كود HTML الأساسي</h1>
+            <h3>
+                <ul>
+                    <li>يوجد في لغة HTML كود أساسي:
+                        <p class="code ltr taltrfs index"></p>
+                    </li>
+                    <li>يساعد الكود الأساسي في HTML على استخدام جميع المميزات.</li>
+                    <li>يمكن كتابة هذا السطر في Visual Studio Code من صندوق الاقتراحات بكتابة علامة تعجب واحدة كما بين
+                        القوسين: (!)</li>
+                    <p class="mlh">يمكن فتح صندوق الاقتراحات إن لم يتم فتحه تلقائيًا باستخدام <kbd>Ctrl</kbd> +
+                        <kbd>Space</kbd> من لوحة المفاتيح.
+                    </p>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">السطر الأول من الكود الأساسي</h1>
+            <h3>
+                <ul>
+                    <li>السطر الأول من الكود الأساسي لHTML:
+                        <p class="ltr code">&lt;!<label class="selector">DOCTYPE</label> <label
+                                class="property">html</label>&gt;</p>
+                    </li>
+                    <li>هو سطر مهم لاستخدام آخر اصدار من HTML</li>
+                    <p class="mlhi">آخر اصدار من HTML يسمى HTML5</p>
+                    <li>يمكن كتابة هذا السطر في Visual Studio Code من صندوق الاقتراحات بكتابة ثلاث علامات تعجب كما بين
+                        القوسين: (!!!)</li>
+                    <p class="mlh">يمكن فتح صندوق الاقتراحات إن لم يتم فتحه تلقائيًا باستخدام <kbd>Ctrl</kbd> +
+                        <kbd>Space</kbd> من لوحة المفاتيح.
+                    </p>
+                    <li>يقوم هذا السطر بتحديد كيفية عرض الصفحة</li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">السطور الأولى من الكود الأساسي</h1>
+            <h3>بعد أول سطر من الكود الأساسي يوجد:
+                <ul>
+                    <li>
+                        سطر بداية الكود ليكون بداية للكود بعد السطر الأول:
+                        <p class="code ltr">&lt;<label class="selector">html</label> <label
+                                class="property">lang</label>=<label class="string">&quot;en&quot;</label>&gt;</p>
+                        <p class="mlh">الخاصية lang تحدد لغة عرض الموقع و en تحدد اللغة الانجليزية</p>
+                    </li>
+                    <li>
+                        السطر الذي يليه هو بداية رأس الموقع الذي يضم أهم بياناته وغالبًا تعالج تلك البيانات دون عرضها:
+                        <p class="code ltr">&lt;<label class="selector">head</label>&gt;</p>
                     </li>
                 </ul>
             </h3>
         </div>
         <div class="div">
-            <h1 class="header">انشاء الملف في Visual Studio Code</h1>
-            <h3>
+            <h1 class="header">عناصر meta ودورها في المواقع</h1>
+            <h3>بعد السطور الأولى من الكود الأساسي يوجد عنصران يسميان meta:
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>يحدد الأول طريقة ترميز الكلمات في الكود:
+                        <p class="code ltr">&lt;<label class="selector">meta</label> <label
+                                class="property">charset</label>=<label class="string">&quot;UTF-8&quot;</label>&gt;</p>
+                    </li>
+                    <li>يحدد الثاني طريقة عرض الصفحة من الحجم:
+                        <p class="code ltr">&lt;<label class="selector">meta</label> <label
+                                class="property">name</label>=<label class="string">&quot;viewport&quot</label>; <label
+                                class="property">content</label>=<label class="string">&quot;width=device-width,
+                                initial-scale=1.0&quot;</label>&gt;</p>
+                    </li>
+                    <p class="activ prize">قم بعمل بحث عن UTF-8 وما دوره في تصميم المواقع؟</p>
                 </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">عنوان الموقع</h1>
+            <h3>بعد عناصر meta يوجد عنصر عنوان الموقع:
+                <ul>
+                    <li>هو عنصر يحدد عنوان الموقع:
+                        <p class="code ltr">&lt;<label class="selector">title</label>&gt;Document&lt;/<label
+                                class="selector">title</label>&gt;</p>
+                    </li>
+                    <li>باستخدام هذا السطر يكون عنوان الموقع هو Document</li>
+                    <li>عند تغيير النص بداخله يتغير عنوان الصفحة</li>
+                    <li>عند تغيير عنوان الصفحة لا يزال يمكنك استخدام باقي المزايا الخاصة باللغة دون تغيير مميزات الكود
+                        الأساسي</li>
+                    <li>يمكن على سبيل المثال تغيير العنوان الى "صفحة البرمجة" عن طريق:
+                        <p class="code ltr">&lt;<label class="selector">title</label>&gt;صفحة البرمجة&lt;/<label
+                                class="selector">title</label>&gt;</p>
+                    </li>
+                    <p class="activ">كيف يتم القيام بتغيير عنوان صفحة الى اسم مدرستك؟</p>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">خاتمة الكود الأساسي</h1>
+            <h3>بعد العنوان تأتي بعض السطور خاتمةً للكود الأساسي وهي:
+                <ul>
+                    <li>نهاية عنصر رأس الصفحة:
+                        <p class="code ltr">&lt;/<label class="selector">head</label>&gt;</p>
+                    </li>
+                    <li>
+                        بداية عنصر جسم الصفحة وهو العنصر الذي يتم وضع العناصر فيه وغالبًا ما يتم عرض تلك العناصر:
+                        <p class="code ltr">&lt;<label class="selector">body</label>&gt;</p>
+                    </li>
+                    <li>يوجد مسافة بين عنصر جسم الصفحة والسطور الباقية ليتم وضع العناصر فيه.
+                    </li>
+                    <li>
+                        نهاية عنصر جسم الصفحة:
+                        <p class="code ltr">&lt;/<label class="selector">body</label>&gt;</p>
+                    </li>
+                    <li>
+                        نهاية العنصر المحتوي للصفحة (عنصر html)
+                        <p class="code ltr">&lt;/<label class="selector">html</label>&gt;</p>
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">عناصر HTML</h1>
+            <h3>داخل عنصر الجسم يوضع بعض العناصر مثل:
+                <ul>
+                    <li>للنصوص:
+                        <table>
+                            <tr>
+                                <th>العناصر</th>
+                                <th>العناوين</th>
+                                <th>الفقرات</th>
+                            </tr>
+                            <tr>
+                                <th>عدد العناصر</th>
+                                <td>6</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <th>تكوين اسماء العناصر</th>
+                                <td>حرف h + رقم الحجم من 1 الى 6</td>
+                                <td>يتكون من حرف p فقط</td>
+                            </tr>
+                            <tr>
+                                <th>خصائص اضافية</th>
+                                <td>كلما زاد الرقم قل الحجم </td>
+                                <td>يحتوي فقرات - لا تستخدم كعناوين - نصوصها أصغر من العناوين</td>
+                            </tr>
+                            <tr>
+                                <th>أمثلة</th>
+                                <td>h1 - h2 - h6 - <abbr title="أكبر عدد ممكن لعنصر عنوان هو 6 فلا يمكن استخدان h7"
+                                        style="text-decoration: line-through; text-decoration-thickness: 5px; text-decoration-color: #555;">h7</abbr>
+                                </td>
+                                <td>p</td>
+                            </tr>
+                            <tr>
+                                <th>طريقة الاستخدام</th>
+                                <td colspan="2">
+                                    <p class="code ltr">&lt;<label class="selector">element</label>&gt;النص يوضع
+                                        هنا&lt;/<label class="selector">element</label>&gt;</p>
+                                    <p class="mlh">يجب استبدال "element" باسم العنصر و"النص يوضع هنا" بالنص الفعلي.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="div">
+            <h1 class="header">المشروع</h1>
+            <h3>
+                <p class="activ prize">قم بعمل موقع لمدرسة المنيل الاعدادية.</p>
             </h3>
         </div>
     </div>
 
     <script type="module">
+        var pageNumber = 1;
+
         const delay = ms => new Promise(res => setInterval(res, ms));
         const next = document.querySelectorAll("button")[0];
         const prev = document.querySelectorAll("button")[1];
         const pgnm = document.querySelectorAll("h1#pgnm")[0];
+        var index;
 
-        var pageNumber = 1;
-        var index = pageNumber - 1;
+        if (getCookie("pgnm") == null) {
+            index = pageNumber - 1;
+        }
+        else {
+            index = Number(getCookie("pgnm"));
+        }
         var available = true;
+
+        function setCookie(name, value, daysToExpire) {
+            const date = new Date();
+            date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + "; " + expires;
+            console.log(name + " cookie created");
+        }
+
+        function getCookie(name) {
+            console.log(document.cookie);
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const cookies = decodedCookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie.indexOf(name + "=") === 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        document.querySelector("p.code.index").innerHTML =
+            `<p class="ltr">&lt;!<label class="selector">DOCTYPE</label> <label class="property">html</label>&gt;
+&lt;<label class="selector">html</label> <label class="property">lang</label>=<label class="string">&quot;en&quot;</label>&gt;
+&lt;<label class="selector">head</label>&gt;
+    &lt;<label class="selector">meta</label> <label class="property">charset</label>=<label class="string">&quot;UTF-8&quot;</label>&gt;
+    &lt;<label class="selector">meta</label> <label class="property">name</label>=<label class="string">&quot;viewport&quot</label>; <label class="property">content</label>=<label class="string">&quot;width=device-width, initial-scale=1.0&quot;</label>&gt;
+    &lt;<label class="selector">title</label>&gt;Document&lt;/<label class="selector">title</label>&gt;
+&lt;/<label class="selector">head</label>&gt;
+&lt;<label class="selector">body</label>&gt;
+
+&lt;/<label class="selector">body</label>&gt;
+&lt;/<label class="selector">html</label>&gt;
+</p>
+`;
+
+        document.querySelectorAll("img").forEach(element => {
+            element.addEventListener("click", () => {
+                window.location.href = "img.html?img=" + encodeURIComponent(element.src);
+            });
+        });
 
         next.addEventListener("click", async () => {
             if (available) {
@@ -361,6 +664,7 @@
                     element.style.display = "block";
                 }
             });
+            setCookie("pgnm", index, 365);
             await delay(100);
         }
     </script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+    <title>عرض الصورة</title>
+</head>
+
+<body>
+
+    <script>
+        const img = document.createElement("img");
+
+        var image = "";
+
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == "img") {
+                image = pair[1];
+            }
+        }
+
+        img.src = decodeURIComponent(image);
+        img.alt = decodeURIComponent(image);
+
+        document.body.appendChild(img);
+
+        (async () => {
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+            await delay(5000);
+            window.location.href = "index.html";
+        })();
+    </script>
+</body>
+
+</html>
